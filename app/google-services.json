@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "98155110672",
+    "firebase_url": "https://whatsapp-423da.firebaseio.com",
+    "project_id": "whatsapp-423da",
+    "storage_bucket": "whatsapp-423da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98155110672:android:10b1d18bc0ca4396f84595",
+        "android_client_info": {
+          "package_name": "pl.krusiec.whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98155110672-pmg6j2bd9hdlv1rumol3iqb26h683d32.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArZoeHkjdHWlBcWL-iaCpt22mTlObsE8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98155110672-pmg6j2bd9hdlv1rumol3iqb26h683d32.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
