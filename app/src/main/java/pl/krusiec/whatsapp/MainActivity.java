@@ -3,8 +3,8 @@ package pl.krusiec.whatsapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Boolean loginModeActive = false;
 
-    public void logIn() {
-        Log.i("Info", "Success login");
+    public void redirectIfLoggedIn() {
+        if (mAuth.getCurrentUser() != null) {
+            Intent intent = new Intent(MainActivity.this, UserListActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void toggleLoginMode(View view) {
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        logIn();
+                        redirectIfLoggedIn();
                     } else {
                         Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -64,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-                        Log.i("Info", "User signed up");
                         FirebaseDatabase.getInstance().getReference().child("users").child(task.getResult().getUser().getUid())
                                 .child("email").setValue(email);
+                        redirectIfLoggedIn();
                     } else {
                         Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -82,8 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        if (mAuth.getCurrentUser() != null) {
-            logIn();
-        }
+        redirectIfLoggedIn();
     }
 }
